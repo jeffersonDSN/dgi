@@ -106,8 +106,8 @@ class InventoryOverviewViewMobile extends IView {
             Text(
               context.tr.inventory.toUpperCase(),
               style: const TextStyle(
-                color: AppColor.primaryColorSwatch,
-                fontSize: 12,
+                color: AppColor.yellow,
+                fontSize: 10,
               ),
             ),
           ],
@@ -119,7 +119,7 @@ class InventoryOverviewViewMobile extends IView {
                 icon: const Icon(
                   Icons.add_circle,
                   size: Sizes.size40,
-                  color: AppColor.primaryColorSwatch,
+                  color: AppColor.yellow,
                 ),
                 onPressed: () {
                   appBloc(context).add(
@@ -141,7 +141,7 @@ class InventoryOverviewViewMobile extends IView {
                 icon: const Icon(
                   Icons.add_circle,
                   size: Sizes.size40,
-                  color: AppColor.primaryColorSwatch,
+                  color: AppColor.yellow,
                 ),
                 onPressed: () {
                   appBloc(context).add(
@@ -163,7 +163,7 @@ class InventoryOverviewViewMobile extends IView {
                 icon: const Icon(
                   Icons.add_circle,
                   size: Sizes.size40,
-                  color: AppColor.primaryColorSwatch,
+                  color: AppColor.yellow,
                 ),
                 onPressed: () {
                   appBloc(context).add(

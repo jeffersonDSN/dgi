@@ -111,7 +111,14 @@ class ProductOverviewViewMobile extends IView {
                           : 'N/A';
 
                       return ListTile(
-                        leading: const DgiRectangularAvatar(),
+                        leading: DgiRectangularAvatar(
+                          child: product.image != ''
+                              ? Image.network(
+                                  product.image,
+                                  fit: BoxFit.fill,
+                                )
+                              : null,
+                        ),
                         title: Text(product.name),
                         subtitle: Text(subtitle),
                         onTap: () {

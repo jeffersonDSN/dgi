@@ -19,7 +19,7 @@ mixin _$ProductRegisterEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CrudType type) load,
-    required TResult Function(Uint8List image) changeImage,
+    required TResult Function(Uint8List? image) changeImage,
     required TResult Function(String name) changeName,
     required TResult Function(String number) changeNumber,
     required TResult Function(String vehicle) changeVehicle,
@@ -32,7 +32,7 @@ mixin _$ProductRegisterEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CrudType type)? load,
-    TResult? Function(Uint8List image)? changeImage,
+    TResult? Function(Uint8List? image)? changeImage,
     TResult? Function(String name)? changeName,
     TResult? Function(String number)? changeNumber,
     TResult? Function(String vehicle)? changeVehicle,
@@ -45,7 +45,7 @@ mixin _$ProductRegisterEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CrudType type)? load,
-    TResult Function(Uint8List image)? changeImage,
+    TResult Function(Uint8List? image)? changeImage,
     TResult Function(String name)? changeName,
     TResult Function(String number)? changeNumber,
     TResult Function(String vehicle)? changeVehicle,
@@ -212,7 +212,7 @@ class _$ProductRegisterEventLoadImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CrudType type) load,
-    required TResult Function(Uint8List image) changeImage,
+    required TResult Function(Uint8List? image) changeImage,
     required TResult Function(String name) changeName,
     required TResult Function(String number) changeNumber,
     required TResult Function(String vehicle) changeVehicle,
@@ -228,7 +228,7 @@ class _$ProductRegisterEventLoadImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CrudType type)? load,
-    TResult? Function(Uint8List image)? changeImage,
+    TResult? Function(Uint8List? image)? changeImage,
     TResult? Function(String name)? changeName,
     TResult? Function(String number)? changeNumber,
     TResult? Function(String vehicle)? changeVehicle,
@@ -244,7 +244,7 @@ class _$ProductRegisterEventLoadImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CrudType type)? load,
-    TResult Function(Uint8List image)? changeImage,
+    TResult Function(Uint8List? image)? changeImage,
     TResult Function(String name)? changeName,
     TResult Function(String number)? changeNumber,
     TResult Function(String vehicle)? changeVehicle,
@@ -336,7 +336,7 @@ abstract class _$$ProductRegisterEventChangeImageImplCopyWith<$Res> {
           $Res Function(_$ProductRegisterEventChangeImageImpl) then) =
       __$$ProductRegisterEventChangeImageImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Uint8List image});
+  $Res call({Uint8List? image});
 }
 
 /// @nodoc
@@ -352,13 +352,13 @@ class __$$ProductRegisterEventChangeImageImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? image = null,
+    Object? image = freezed,
   }) {
     return _then(_$ProductRegisterEventChangeImageImpl(
-      image: null == image
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as Uint8List,
+              as Uint8List?,
     ));
   }
 }
@@ -371,7 +371,7 @@ class _$ProductRegisterEventChangeImageImpl
   const _$ProductRegisterEventChangeImageImpl({required this.image});
 
   @override
-  final Uint8List image;
+  final Uint8List? image;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -410,7 +410,7 @@ class _$ProductRegisterEventChangeImageImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CrudType type) load,
-    required TResult Function(Uint8List image) changeImage,
+    required TResult Function(Uint8List? image) changeImage,
     required TResult Function(String name) changeName,
     required TResult Function(String number) changeNumber,
     required TResult Function(String vehicle) changeVehicle,
@@ -426,7 +426,7 @@ class _$ProductRegisterEventChangeImageImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CrudType type)? load,
-    TResult? Function(Uint8List image)? changeImage,
+    TResult? Function(Uint8List? image)? changeImage,
     TResult? Function(String name)? changeName,
     TResult? Function(String number)? changeNumber,
     TResult? Function(String vehicle)? changeVehicle,
@@ -442,7 +442,7 @@ class _$ProductRegisterEventChangeImageImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CrudType type)? load,
-    TResult Function(Uint8List image)? changeImage,
+    TResult Function(Uint8List? image)? changeImage,
     TResult Function(String name)? changeName,
     TResult Function(String number)? changeNumber,
     TResult Function(String vehicle)? changeVehicle,
@@ -519,9 +519,10 @@ class _$ProductRegisterEventChangeImageImpl
 
 abstract class ProductRegisterEventChangeImage implements ProductRegisterEvent {
   const factory ProductRegisterEventChangeImage(
-      {required final Uint8List image}) = _$ProductRegisterEventChangeImageImpl;
+          {required final Uint8List? image}) =
+      _$ProductRegisterEventChangeImageImpl;
 
-  Uint8List get image;
+  Uint8List? get image;
   @JsonKey(ignore: true)
   _$$ProductRegisterEventChangeImageImplCopyWith<
           _$ProductRegisterEventChangeImageImpl>
@@ -608,7 +609,7 @@ class _$ProductRegisterEventChangeNameImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CrudType type) load,
-    required TResult Function(Uint8List image) changeImage,
+    required TResult Function(Uint8List? image) changeImage,
     required TResult Function(String name) changeName,
     required TResult Function(String number) changeNumber,
     required TResult Function(String vehicle) changeVehicle,
@@ -624,7 +625,7 @@ class _$ProductRegisterEventChangeNameImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CrudType type)? load,
-    TResult? Function(Uint8List image)? changeImage,
+    TResult? Function(Uint8List? image)? changeImage,
     TResult? Function(String name)? changeName,
     TResult? Function(String number)? changeNumber,
     TResult? Function(String vehicle)? changeVehicle,
@@ -640,7 +641,7 @@ class _$ProductRegisterEventChangeNameImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CrudType type)? load,
-    TResult Function(Uint8List image)? changeImage,
+    TResult Function(Uint8List? image)? changeImage,
     TResult Function(String name)? changeName,
     TResult Function(String number)? changeNumber,
     TResult Function(String vehicle)? changeVehicle,
@@ -806,7 +807,7 @@ class _$ProductRegisterEventChangeNumberImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CrudType type) load,
-    required TResult Function(Uint8List image) changeImage,
+    required TResult Function(Uint8List? image) changeImage,
     required TResult Function(String name) changeName,
     required TResult Function(String number) changeNumber,
     required TResult Function(String vehicle) changeVehicle,
@@ -822,7 +823,7 @@ class _$ProductRegisterEventChangeNumberImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CrudType type)? load,
-    TResult? Function(Uint8List image)? changeImage,
+    TResult? Function(Uint8List? image)? changeImage,
     TResult? Function(String name)? changeName,
     TResult? Function(String number)? changeNumber,
     TResult? Function(String vehicle)? changeVehicle,
@@ -838,7 +839,7 @@ class _$ProductRegisterEventChangeNumberImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CrudType type)? load,
-    TResult Function(Uint8List image)? changeImage,
+    TResult Function(Uint8List? image)? changeImage,
     TResult Function(String name)? changeName,
     TResult Function(String number)? changeNumber,
     TResult Function(String vehicle)? changeVehicle,
@@ -1005,7 +1006,7 @@ class _$ProductRegisterEventChangeVehicleImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CrudType type) load,
-    required TResult Function(Uint8List image) changeImage,
+    required TResult Function(Uint8List? image) changeImage,
     required TResult Function(String name) changeName,
     required TResult Function(String number) changeNumber,
     required TResult Function(String vehicle) changeVehicle,
@@ -1021,7 +1022,7 @@ class _$ProductRegisterEventChangeVehicleImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CrudType type)? load,
-    TResult? Function(Uint8List image)? changeImage,
+    TResult? Function(Uint8List? image)? changeImage,
     TResult? Function(String name)? changeName,
     TResult? Function(String number)? changeNumber,
     TResult? Function(String vehicle)? changeVehicle,
@@ -1037,7 +1038,7 @@ class _$ProductRegisterEventChangeVehicleImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CrudType type)? load,
-    TResult Function(Uint8List image)? changeImage,
+    TResult Function(Uint8List? image)? changeImage,
     TResult Function(String name)? changeName,
     TResult Function(String number)? changeNumber,
     TResult Function(String vehicle)? changeVehicle,
@@ -1205,7 +1206,7 @@ class _$ProductRegisterEventChangeBrandImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CrudType type) load,
-    required TResult Function(Uint8List image) changeImage,
+    required TResult Function(Uint8List? image) changeImage,
     required TResult Function(String name) changeName,
     required TResult Function(String number) changeNumber,
     required TResult Function(String vehicle) changeVehicle,
@@ -1221,7 +1222,7 @@ class _$ProductRegisterEventChangeBrandImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CrudType type)? load,
-    TResult? Function(Uint8List image)? changeImage,
+    TResult? Function(Uint8List? image)? changeImage,
     TResult? Function(String name)? changeName,
     TResult? Function(String number)? changeNumber,
     TResult? Function(String vehicle)? changeVehicle,
@@ -1237,7 +1238,7 @@ class _$ProductRegisterEventChangeBrandImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CrudType type)? load,
-    TResult Function(Uint8List image)? changeImage,
+    TResult Function(Uint8List? image)? changeImage,
     TResult Function(String name)? changeName,
     TResult Function(String number)? changeNumber,
     TResult Function(String vehicle)? changeVehicle,
@@ -1404,7 +1405,7 @@ class _$ProductRegisterEventChangeQuantityImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CrudType type) load,
-    required TResult Function(Uint8List image) changeImage,
+    required TResult Function(Uint8List? image) changeImage,
     required TResult Function(String name) changeName,
     required TResult Function(String number) changeNumber,
     required TResult Function(String vehicle) changeVehicle,
@@ -1420,7 +1421,7 @@ class _$ProductRegisterEventChangeQuantityImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CrudType type)? load,
-    TResult? Function(Uint8List image)? changeImage,
+    TResult? Function(Uint8List? image)? changeImage,
     TResult? Function(String name)? changeName,
     TResult? Function(String number)? changeNumber,
     TResult? Function(String vehicle)? changeVehicle,
@@ -1436,7 +1437,7 @@ class _$ProductRegisterEventChangeQuantityImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CrudType type)? load,
-    TResult Function(Uint8List image)? changeImage,
+    TResult Function(Uint8List? image)? changeImage,
     TResult Function(String name)? changeName,
     TResult Function(String number)? changeNumber,
     TResult Function(String vehicle)? changeVehicle,
@@ -1603,7 +1604,7 @@ class _$ProductRegisterEventChangePriceImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CrudType type) load,
-    required TResult Function(Uint8List image) changeImage,
+    required TResult Function(Uint8List? image) changeImage,
     required TResult Function(String name) changeName,
     required TResult Function(String number) changeNumber,
     required TResult Function(String vehicle) changeVehicle,
@@ -1619,7 +1620,7 @@ class _$ProductRegisterEventChangePriceImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CrudType type)? load,
-    TResult? Function(Uint8List image)? changeImage,
+    TResult? Function(Uint8List? image)? changeImage,
     TResult? Function(String name)? changeName,
     TResult? Function(String number)? changeNumber,
     TResult? Function(String vehicle)? changeVehicle,
@@ -1635,7 +1636,7 @@ class _$ProductRegisterEventChangePriceImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CrudType type)? load,
-    TResult Function(Uint8List image)? changeImage,
+    TResult Function(Uint8List? image)? changeImage,
     TResult Function(String name)? changeName,
     TResult Function(String number)? changeNumber,
     TResult Function(String vehicle)? changeVehicle,
@@ -1801,7 +1802,7 @@ class _$ProductRegisterEventSaveImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CrudType type) load,
-    required TResult Function(Uint8List image) changeImage,
+    required TResult Function(Uint8List? image) changeImage,
     required TResult Function(String name) changeName,
     required TResult Function(String number) changeNumber,
     required TResult Function(String vehicle) changeVehicle,
@@ -1817,7 +1818,7 @@ class _$ProductRegisterEventSaveImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CrudType type)? load,
-    TResult? Function(Uint8List image)? changeImage,
+    TResult? Function(Uint8List? image)? changeImage,
     TResult? Function(String name)? changeName,
     TResult? Function(String number)? changeNumber,
     TResult? Function(String vehicle)? changeVehicle,
@@ -1833,7 +1834,7 @@ class _$ProductRegisterEventSaveImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CrudType type)? load,
-    TResult Function(Uint8List image)? changeImage,
+    TResult Function(Uint8List? image)? changeImage,
     TResult Function(String name)? changeName,
     TResult Function(String number)? changeNumber,
     TResult Function(String vehicle)? changeVehicle,

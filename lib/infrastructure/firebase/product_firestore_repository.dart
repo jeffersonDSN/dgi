@@ -42,7 +42,7 @@ class ProductFireStoreRepository extends TenantFirestoreRepository
       'brand': value.brand,
       'quantity': value.quantity,
       'price': value.price,
-      //'base64Image': value.base64Image,
+      'image': value.image,
     };
 
     var doc = await collection.add(produc);
@@ -58,7 +58,7 @@ class ProductFireStoreRepository extends TenantFirestoreRepository
       'brand': value.brand,
       'quantity': value.quantity,
       'price': value.price,
-      //'base64Image': value.base64Image,
+      'image': value.image,
     };
 
     await collection.doc(value.id).update(produc);

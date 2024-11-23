@@ -2,7 +2,6 @@ import 'package:dgi/domain/controllers/crud_controller.dart';
 import 'package:dgi/domain/controllers/product_controller.dart';
 import 'package:dgi/domain/entities/Vehicle/vehicle.dart';
 import 'package:dgi/domain/entities/brand/brand.dart';
-import 'package:dgi/domain/entities/product/product.dart';
 import 'package:dgi/infrastructure/firebase/brand_firestore_repository.dart';
 import 'package:dgi/infrastructure/firebase/image_firebase_storage.dart';
 import 'package:dgi/infrastructure/firebase/product_firestore_repository.dart';

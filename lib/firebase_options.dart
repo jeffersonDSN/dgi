@@ -46,7 +46,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '789734977427',
     projectId: 'dginventory-d9593',
     authDomain: 'dginventory-d9593.firebaseapp.com',
-    storageBucket: 'dginventory-d9593.appspot.com',
+    storageBucket: 'dginventory-d9593.firebasestorage.app',
     measurementId: 'G-Z7C5MPFLC4',
   );
 
@@ -55,7 +55,7 @@ class DefaultFirebaseOptions {
     appId: '1:789734977427:android:51c48a247e779413510266',
     messagingSenderId: '789734977427',
     projectId: 'dginventory-d9593',
-    storageBucket: 'dginventory-d9593.appspot.com',
+    storageBucket: 'dginventory-d9593.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
@@ -63,7 +63,7 @@ class DefaultFirebaseOptions {
     appId: '1:789734977427:ios:e25b2c0e1bada766510266',
     messagingSenderId: '789734977427',
     projectId: 'dginventory-d9593',
-    storageBucket: 'dginventory-d9593.appspot.com',
+    storageBucket: 'dginventory-d9593.firebasestorage.app',
     iosBundleId: 'com.example.dgi',
   );
 
@@ -72,7 +72,7 @@ class DefaultFirebaseOptions {
     appId: '1:789734977427:ios:e25b2c0e1bada766510266',
     messagingSenderId: '789734977427',
     projectId: 'dginventory-d9593',
-    storageBucket: 'dginventory-d9593.appspot.com',
+    storageBucket: 'dginventory-d9593.firebasestorage.app',
     iosBundleId: 'com.example.dgi',
   );
 
@@ -82,8 +82,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '789734977427',
     projectId: 'dginventory-d9593',
     authDomain: 'dginventory-d9593.firebaseapp.com',
-    storageBucket: 'dginventory-d9593.appspot.com',
+    storageBucket: 'dginventory-d9593.firebasestorage.app',
     measurementId: 'G-5GDKZEXZ6D',
   );
-
 }

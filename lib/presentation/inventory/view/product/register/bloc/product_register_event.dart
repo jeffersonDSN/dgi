@@ -7,7 +7,7 @@ class ProductRegisterEvent with _$ProductRegisterEvent {
   }) = ProductRegisterEventLoad;
 
   const factory ProductRegisterEvent.changeImage({
-    required Uint8List image,
+    required Uint8List? image,
   }) = ProductRegisterEventChangeImage;
 
   const factory ProductRegisterEvent.changeName({

@@ -29,8 +29,8 @@ class HomeOverviewViewMobile extends IView {
             Text(
               context.tr.inventory.toUpperCase(),
               style: const TextStyle(
-                color: AppColor.primaryColorSwatch,
-                fontSize: 12,
+                color: AppColor.yellow,
+                fontSize: 10,
               ),
             ),
           ],

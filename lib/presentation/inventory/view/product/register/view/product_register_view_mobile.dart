@@ -1,4 +1,5 @@
-import 'dart:convert';
+import 'package:dgi/presentation/core/utils/web_image_pickerService.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:dgi/presentation/app/bloc/app_bloc.dart';
 import 'package:dgi/presentation/app/model/crud_type.dart';
@@ -61,8 +62,17 @@ class ProductRegisterViewMobile extends IView {
                                         : null,
                                   ),
                                   onTap: () async {
-                                    final Uint8List image = await platform
-                                        .invokeMethod('takePhoto');
+                                    Uint8List? image;
+
+                                    if (kIsWeb) {
+                                      final result =
+                                          await WebImagePickerService()
+                                              .pickImage();
+                                      image = result['data'] as Uint8List?;
+                                    } else {
+                                      image = await platform
+                                          .invokeMethod('takePhoto');
+                                    }
 
                                     bloc.add(
                                       ProductRegisterEvent.changeImage(

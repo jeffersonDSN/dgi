@@ -3,7 +3,6 @@ import 'package:dgi/domain/controllers/product_controller.dart';
 import 'package:dgi/domain/entities/Vehicle/vehicle.dart';
 import 'package:dgi/domain/entities/brand/brand.dart';
 import 'package:dgi/domain/entities/product/product.dart';
-import 'package:dgi/domain/repositories/abs_i_image_repository.dart';
 import 'package:dgi/presentation/app/model/crud_type.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,7 +26,11 @@ class ProductRegisterBloc
             const ProductRegisterState.loading(),
           );
 
-          var result = await Future.wait([
+          var [
+            product,
+            brands,
+            vehicles,
+          ] = await Future.wait([
             type.when(
               create: () async {
                 return const Product();
@@ -40,12 +43,18 @@ class ProductRegisterBloc
             controllerVehicle.getAll(),
           ]);
 
+          Uint8List? image;
+          if ((product as Product).image != '') {
+            image = await controller.downloadUint8List(product.image);
+          }
+
           emit(
             ProductRegisterState.loaded(
               type: type,
-              product: result[0] as Product,
-              brands: result[1] as List<Brand>,
-              vehicles: result[2] as List<Vehicle>,
+              product: product,
+              image: image,
+              brands: brands as List<Brand>,
+              vehicles: vehicles as List<Vehicle>,
             ),
           );
         },
@@ -114,29 +123,15 @@ class ProductRegisterBloc
         save: (callback) async {
           await state.asLoaded.type.when(
             create: () async {
-              String image = '';
-
-              if (state.asLoaded.image != null) {
-                image = await controller.uploadUint8List(state.asLoaded.image!);
-              }
-
               return controller.create(
-                state.asLoaded.product.copyWith(
-                  image: image,
-                ),
+                state.asLoaded.product,
+                state.asLoaded.image,
               );
             },
             update: (id) async {
-              String image = '';
-
-              if (state.asLoaded.image != null) {
-                image = await controller.uploadUint8List(state.asLoaded.image!);
-              }
-
               return controller.update(
-                state.asLoaded.product.copyWith(
-                  image: image,
-                ),
+                state.asLoaded.product,
+                state.asLoaded.image,
               );
             },
           );

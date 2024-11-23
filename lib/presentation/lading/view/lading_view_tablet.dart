@@ -32,7 +32,7 @@ class LandingViewTablet extends IView {
                 context.tr.inventory.toUpperCase(),
                 style: const TextStyle(
                   color: AppColor.yellow,
-                  fontSize: 12,
+                  fontSize: 10,
                 ),
               ),
             ],

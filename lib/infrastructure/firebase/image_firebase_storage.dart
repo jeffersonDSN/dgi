@@ -11,7 +11,11 @@ class ImageFirebaseStorage implements AbsIImageRepository<Uint8List> {
   @override
   Future<Either<ErrorFields, String>> uploadUint8List(data) async {
     try {
-      var result = await ref.child('image').putData(data);
+      final String uniqueFileName =
+          'images/${DateTime.now().millisecondsSinceEpoch}.png';
+
+      var result = await ref.child(uniqueFileName).putData(data);
+
       return right(await result.ref.getDownloadURL());
     } catch (e) {
       return left(
@@ -21,5 +25,27 @@ class ImageFirebaseStorage implements AbsIImageRepository<Uint8List> {
         ),
       );
     }
+  }
+
+  @override
+  Future<Either<ErrorFields, Uint8List>> downloadUint8List(
+      String fullPath) async {
+    try {
+      var data = await ref.child(fullPath).getData();
+      return right(data!);
+    } catch (e) {
+      return left(
+        (
+          code: 50,
+          message: e.toString(),
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<void> deleteImage(String fullPath) async {
+    final ref = FirebaseStorage.instance.ref().child(fullPath);
+    await ref.delete();
   }
 }
