@@ -3,7 +3,7 @@ import 'package:dgi/domain/entities/Vehicle/vehicle.dart';
 import 'package:dgi/domain/entities/brand/brand.dart';
 import 'package:dgi/domain/entities/product_other_store/product_other_store.dart';
 import 'package:dgi/domain/repositories/abs_i_product_other_stores_repository.dart';
-import 'package:dgi/infrastructure/firestore/firestore_repository.dart';
+import 'package:dgi/infrastructure/firebase/firestore_repository.dart';
 
 class ProductOtherStoresFireStoreRepository extends FireStoreRepository
     implements AbsIProductOtherStoresRepository {

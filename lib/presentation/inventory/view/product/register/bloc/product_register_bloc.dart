@@ -1,7 +1,9 @@
 import 'package:dgi/domain/controllers/crud_controller.dart';
+import 'package:dgi/domain/controllers/product_controller.dart';
 import 'package:dgi/domain/entities/Vehicle/vehicle.dart';
 import 'package:dgi/domain/entities/brand/brand.dart';
 import 'package:dgi/domain/entities/product/product.dart';
+import 'package:dgi/domain/repositories/abs_i_image_repository.dart';
 import 'package:dgi/presentation/app/model/crud_type.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +16,7 @@ part 'product_register_state.dart';
 class ProductRegisterBloc
     extends Bloc<ProductRegisterEvent, ProductRegisterState> {
   ProductRegisterBloc({
-    required CRUDController<Product> controller,
+    required ProductController controller,
     required CRUDController<Vehicle> controllerVehicle,
     required CRUDController<Brand> controllerBrand,
   }) : super(const ProductRegisterState.empty()) {
@@ -47,7 +49,14 @@ class ProductRegisterBloc
             ),
           );
         },
-        changeName: (name) async {
+        changeImage: (image) {
+          emit(
+            state.asLoaded.copyWith(
+              image: image,
+            ),
+          );
+        },
+        changeName: (name) {
           emit(
             state.asLoaded.copyWith(
               product: state.asLoaded.product.copyWith(
@@ -105,13 +114,29 @@ class ProductRegisterBloc
         save: (callback) async {
           await state.asLoaded.type.when(
             create: () async {
+              String image = '';
+
+              if (state.asLoaded.image != null) {
+                image = await controller.uploadUint8List(state.asLoaded.image!);
+              }
+
               return controller.create(
-                state.asLoaded.product,
+                state.asLoaded.product.copyWith(
+                  image: image,
+                ),
               );
             },
             update: (id) async {
+              String image = '';
+
+              if (state.asLoaded.image != null) {
+                image = await controller.uploadUint8List(state.asLoaded.image!);
+              }
+
               return controller.update(
-                state.asLoaded.product,
+                state.asLoaded.product.copyWith(
+                  image: image,
+                ),
               );
             },
           );

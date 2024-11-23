@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dgi/domain/core/types_defs.dart';
 import 'package:dgi/domain/entities/Vehicle/vehicle.dart';
 import 'package:dgi/domain/repositories/abs_i_crud_repository.dart';
-import 'package:dgi/infrastructure/firestore/tenant_firestore_repository.dart';
+import 'package:dgi/infrastructure/firebase/tenant_firestore_repository.dart';
 
 class VehicleFireStoreRepository extends TenantFirestoreRepository
     implements AbsICRUDRepository<Vehicle> {

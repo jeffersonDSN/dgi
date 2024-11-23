@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:dgi/presentation/app/bloc/app_bloc.dart';
 import 'package:dgi/presentation/app/model/crud_type.dart';
 import 'package:dgi/presentation/core/extensions/build_context_extentions.dart';
 import 'package:dgi/presentation/core/view/i_view.dart';
 import 'package:dgi/presentation/core/widget/base_dropdown_button_field.dart';
 import 'package:dgi/presentation/core/widget/base_text_form_field.dart';
+import 'package:dgi/presentation/core/widget/dgi_rectangular_avatar.dart';
 import 'package:dgi/presentation/inventory/view/product/register/bloc/product_register_bloc.dart';
 import 'package:dgi/presentation/theme/app_color.dart';
 import 'package:dgi/presentation/theme/app_sizes.dart';
@@ -12,6 +15,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductRegisterViewMobile extends IView {
+  static const platform = MethodChannel('com.example.native/camera');
+
   final CrudType type;
 
   const ProductRegisterViewMobile({
@@ -39,35 +44,66 @@ class ProductRegisterViewMobile extends IView {
                   orElse: () => const Center(
                     child: CircularProgressIndicator(),
                   ),
-                  loaded: (type, product, vehicles, brands) {
+                  loaded: (type, product, image, vehicles, brands) {
                     return Padding(
                       padding: const EdgeInsets.only(bottom: Sizes.size16),
                       child: SingleChildScrollView(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            BaseTextFormField(
-                              label: context.tr.name,
-                              initialValue: product.name,
-                              onChanged: (value) {
-                                bloc.add(
-                                  ProductRegisterEvent.changeName(
-                                    name: value,
+                            Row(
+                              children: [
+                                InkWell(
+                                  child: DgiRectangularAvatar(
+                                    dimension: Sizes.size156,
+                                    child: image != null
+                                        ? Image.memory(image, fit: BoxFit.fill)
+                                        : null,
                                   ),
-                                );
-                              },
-                            ),
-                            gapHeight16,
-                            BaseTextFormField(
-                              label: context.tr.number,
-                              initialValue: product.number,
-                              onChanged: (value) {
-                                bloc.add(
-                                  ProductRegisterEvent.changeNumber(
-                                    number: value,
+                                  onTap: () async {
+                                    final Uint8List image = await platform
+                                        .invokeMethod('takePhoto');
+
+                                    bloc.add(
+                                      ProductRegisterEvent.changeImage(
+                                        image: image,
+                                      ),
+                                    );
+                                  },
+                                ),
+                                gapWidth16,
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      BaseTextFormField(
+                                        label: context.tr.name,
+                                        initialValue: product.name,
+                                        onChanged: (value) {
+                                          bloc.add(
+                                            ProductRegisterEvent.changeName(
+                                              name: value,
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                      gapHeight16,
+                                      BaseTextFormField(
+                                        label: context.tr.number,
+                                        initialValue: product.number,
+                                        onChanged: (value) {
+                                          bloc.add(
+                                            ProductRegisterEvent.changeNumber(
+                                              number: value,
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ],
                                   ),
-                                );
-                              },
+                                )
+                              ],
                             ),
                             gapHeight16,
                             BaseDropdownButtonField(

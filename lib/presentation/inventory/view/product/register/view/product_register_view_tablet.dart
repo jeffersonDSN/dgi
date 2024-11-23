@@ -39,7 +39,7 @@ class ProductRegisterViewTablet extends IView {
                   orElse: () => const Center(
                     child: CircularProgressIndicator(),
                   ),
-                  loaded: (type, product, vehicles, brands) {
+                  loaded: (type, product, image, vehicles, brands) {
                     return Padding(
                       padding: const EdgeInsets.fromLTRB(
                         Sizes.size32,

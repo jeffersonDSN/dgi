@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dgi/domain/core/types_defs.dart';
 import 'package:dgi/domain/entities/user/user.dart';
 import 'package:dgi/domain/repositories/abs_i_employees_repository%20copy.dart';
-import 'package:dgi/infrastructure/firestore/firestore_repository.dart';
+import 'package:dgi/infrastructure/firebase/firestore_repository.dart';
 
 class UserFireStoreRepository extends FireStoreRepository
     implements AbsIUserRepository {

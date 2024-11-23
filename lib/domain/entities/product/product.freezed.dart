@@ -21,6 +21,7 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Product {
   String get id => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get number => throw _privateConstructorUsedError;
   String get brand => throw _privateConstructorUsedError;
@@ -40,6 +41,7 @@ abstract class $ProductCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
+      String image,
       String name,
       String number,
       String brand,
@@ -62,6 +64,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   @override
   $Res call({
     Object? id = null,
+    Object? image = null,
     Object? name = null,
     Object? number = null,
     Object? brand = null,
@@ -73,6 +76,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
           ? _value.name
@@ -111,6 +118,7 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
+      String image,
       String name,
       String number,
       String brand,
@@ -131,6 +139,7 @@ class __$$ProductImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? image = null,
     Object? name = null,
     Object? number = null,
     Object? brand = null,
@@ -142,6 +151,10 @@ class __$$ProductImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
           ? _value.name
@@ -176,6 +189,7 @@ class __$$ProductImplCopyWithImpl<$Res>
 class _$ProductImpl implements _Product {
   const _$ProductImpl(
       {this.id = '',
+      this.image = '',
       this.name = '',
       this.number = '',
       this.brand = '',
@@ -189,6 +203,9 @@ class _$ProductImpl implements _Product {
   @override
   @JsonKey()
   final String id;
+  @override
+  @JsonKey()
+  final String image;
   @override
   @JsonKey()
   final String name;
@@ -210,7 +227,7 @@ class _$ProductImpl implements _Product {
 
   @override
   String toString() {
-    return 'Product(id: $id, name: $name, number: $number, brand: $brand, vehicle: $vehicle, quantity: $quantity, price: $price)';
+    return 'Product(id: $id, image: $image, name: $name, number: $number, brand: $brand, vehicle: $vehicle, quantity: $quantity, price: $price)';
   }
 
   @override
@@ -219,6 +236,7 @@ class _$ProductImpl implements _Product {
         (other.runtimeType == runtimeType &&
             other is _$ProductImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.image, image) || other.image == image) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.number, number) || other.number == number) &&
             (identical(other.brand, brand) || other.brand == brand) &&
@@ -231,7 +249,7 @@ class _$ProductImpl implements _Product {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, name, number, brand, vehicle, quantity, price);
+      runtimeType, id, image, name, number, brand, vehicle, quantity, price);
 
   @JsonKey(ignore: true)
   @override
@@ -250,6 +268,7 @@ class _$ProductImpl implements _Product {
 abstract class _Product implements Product {
   const factory _Product(
       {final String id,
+      final String image,
       final String name,
       final String number,
       final String brand,
@@ -261,6 +280,8 @@ abstract class _Product implements Product {
 
   @override
   String get id;
+  @override
+  String get image;
   @override
   String get name;
   @override

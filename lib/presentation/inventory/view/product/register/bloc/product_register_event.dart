@@ -6,6 +6,10 @@ class ProductRegisterEvent with _$ProductRegisterEvent {
     required CrudType type,
   }) = ProductRegisterEventLoad;
 
+  const factory ProductRegisterEvent.changeImage({
+    required Uint8List image,
+  }) = ProductRegisterEventChangeImage;
+
   const factory ProductRegisterEvent.changeName({
     required String name,
   }) = ProductRegisterEventChangeName;

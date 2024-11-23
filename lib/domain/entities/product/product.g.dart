@@ -9,6 +9,7 @@ part of 'product.dart';
 _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
     _$ProductImpl(
       id: json['id'] as String? ?? '',
+      image: json['image'] as String? ?? '',
       name: json['name'] as String? ?? '',
       number: json['number'] as String? ?? '',
       brand: json['brand'] as String? ?? '',
@@ -20,6 +21,7 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'image': instance.image,
       'name': instance.name,
       'number': instance.number,
       'brand': instance.brand,

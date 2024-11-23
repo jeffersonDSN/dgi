@@ -39,7 +39,7 @@ class SignInViewMobile extends IView {
                       Text(
                         context.tr.inventory.toUpperCase(),
                         style: const TextStyle(
-                          fontSize: Sizes.size24,
+                          fontSize: Sizes.size20,
                           color: AppColor.yellow,
                           fontWeight: FontWeight.bold,
                         ),
@@ -47,7 +47,7 @@ class SignInViewMobile extends IView {
                       const Text(
                         'welcome!',
                         style: TextStyle(
-                          fontSize: Sizes.size24,
+                          fontSize: Sizes.size20,
                           color: AppColor.yellow,
                           fontWeight: FontWeight.bold,
                         ),

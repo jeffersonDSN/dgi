@@ -7,6 +7,7 @@ class ProductRegisterState with _$ProductRegisterState {
   const factory ProductRegisterState.loaded({
     required CrudType type,
     required Product product,
+    Uint8List? image,
     required List<Vehicle> vehicles,
     required List<Brand> brands,
   }) = ProductRegisterStateLoaded;

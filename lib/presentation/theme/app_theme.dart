@@ -84,6 +84,7 @@ TextTheme get _textTheme => const TextTheme(
 ListTileThemeData get _listTileTheme => const ListTileThemeData(
       titleTextStyle: TextStyle(
         fontSize: 16,
+        color: AppColor.black,
       ),
       iconColor: Colors.black,
       selectedColor: Colors.black,

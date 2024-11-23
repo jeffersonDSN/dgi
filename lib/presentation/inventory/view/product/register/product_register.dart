@@ -1,10 +1,12 @@
 import 'package:dgi/domain/controllers/crud_controller.dart';
+import 'package:dgi/domain/controllers/product_controller.dart';
 import 'package:dgi/domain/entities/Vehicle/vehicle.dart';
 import 'package:dgi/domain/entities/brand/brand.dart';
 import 'package:dgi/domain/entities/product/product.dart';
-import 'package:dgi/infrastructure/firestore/brand_firestore_repository.dart';
-import 'package:dgi/infrastructure/firestore/product_firestore_repository.dart';
-import 'package:dgi/infrastructure/firestore/vehicle_firestore_repository.dart';
+import 'package:dgi/infrastructure/firebase/brand_firestore_repository.dart';
+import 'package:dgi/infrastructure/firebase/image_firebase_storage.dart';
+import 'package:dgi/infrastructure/firebase/product_firestore_repository.dart';
+import 'package:dgi/infrastructure/firebase/vehicle_firestore_repository.dart';
 import 'package:dgi/presentation/app/bloc/app_bloc.dart';
 import 'package:dgi/presentation/app/model/crud_type.dart';
 import 'package:dgi/presentation/core/view/i_view.dart';
@@ -29,8 +31,9 @@ class ProductRegister extends IView {
 
     return BlocProvider<ProductRegisterBloc>(
         create: (context) => ProductRegisterBloc(
-              controller: CRUDController<Product>(
+              controller: ProductController(
                 repository: ProductFireStoreRepository(tenantId: tenantId),
+                imageRepository: ImageFirebaseStorage(),
               ),
               controllerVehicle: CRUDController<Vehicle>(
                 repository: VehicleFireStoreRepository(tenantId: tenantId),

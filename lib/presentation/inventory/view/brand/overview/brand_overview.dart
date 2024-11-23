@@ -1,6 +1,6 @@
 import 'package:dgi/domain/controllers/crud_controller.dart';
 import 'package:dgi/domain/entities/brand/brand.dart';
-import 'package:dgi/infrastructure/firestore/brand_firestore_repository.dart';
+import 'package:dgi/infrastructure/firebase/brand_firestore_repository.dart';
 import 'package:dgi/presentation/app/bloc/app_bloc.dart';
 import 'package:dgi/presentation/core/view/i_view.dart';
 import 'package:dgi/presentation/core/widget/dgi_responsive_widget.dart';
