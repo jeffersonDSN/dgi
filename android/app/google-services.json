@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "789734977427",
+    "project_id": "dginventory-d9593",
+    "storage_bucket": "dginventory-d9593.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:789734977427:android:51c48a247e779413510266",
+        "android_client_info": {
+          "package_name": "com.dgi.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOhRxX55vzWAP8dDUa6L6nyrQQeWWWCHA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
