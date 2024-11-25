@@ -28,7 +28,7 @@ class InventoryOverviewViewMobile extends IView {
       appBar: AppBar(
         backgroundColor: AppColor.primaryColorSwatch,
         iconTheme: const IconThemeData(
-          color: AppColor.yellow,
+          color: AppColor.lightColor,
         ),
         leading: IconButton(
           icon: const Icon(
@@ -106,7 +106,7 @@ class InventoryOverviewViewMobile extends IView {
             Text(
               context.tr.inventory.toUpperCase(),
               style: const TextStyle(
-                color: AppColor.yellow,
+                color: AppColor.lightColor,
                 fontSize: 10,
               ),
             ),
@@ -119,7 +119,7 @@ class InventoryOverviewViewMobile extends IView {
                 icon: const Icon(
                   Icons.add_circle,
                   size: Sizes.size40,
-                  color: AppColor.yellow,
+                  color: AppColor.lightColor,
                 ),
                 onPressed: () {
                   appBloc(context).add(
@@ -141,7 +141,7 @@ class InventoryOverviewViewMobile extends IView {
                 icon: const Icon(
                   Icons.add_circle,
                   size: Sizes.size40,
-                  color: AppColor.yellow,
+                  color: AppColor.lightColor,
                 ),
                 onPressed: () {
                   appBloc(context).add(
@@ -163,7 +163,7 @@ class InventoryOverviewViewMobile extends IView {
                 icon: const Icon(
                   Icons.add_circle,
                   size: Sizes.size40,
-                  color: AppColor.yellow,
+                  color: AppColor.lightColor,
                 ),
                 onPressed: () {
                   appBloc(context).add(
@@ -184,46 +184,43 @@ class InventoryOverviewViewMobile extends IView {
           )
         ],
       ),
-      body: Container(
-        color: AppColor.lightColor,
-        child: Padding(
-          padding: const EdgeInsets.all(Sizes.size16),
-          child: BlocBuilder<AppBloc, AppState>(
-            bloc: bloc,
-            builder: (context, state) {
-              return bloc.state.asLogged.mod.asModInventory.inventoryFeatures
-                  .when(
-                product: (type) => type.when(
-                  overview: () => const ProductOverview(),
-                  create: () => const ProductRegister(),
-                  update: (id) => ProductRegister(
-                    type: CrudType.update(
-                      id: id,
-                    ),
+      body: Padding(
+        padding: const EdgeInsets.all(Sizes.size16),
+        child: BlocBuilder<AppBloc, AppState>(
+          bloc: bloc,
+          builder: (context, state) {
+            return bloc.state.asLogged.mod.asModInventory.inventoryFeatures
+                .when(
+              product: (type) => type.when(
+                overview: () => const ProductOverview(),
+                create: () => const ProductRegister(),
+                update: (id) => ProductRegister(
+                  type: CrudType.update(
+                    id: id,
                   ),
                 ),
-                vehicle: (type) => type.when(
-                  overview: () => const VehicleOverview(),
-                  create: () => const VehicleRegister(),
-                  update: (id) => VehicleRegister(
-                    type: CrudType.update(
-                      id: id,
-                    ),
+              ),
+              vehicle: (type) => type.when(
+                overview: () => const VehicleOverview(),
+                create: () => const VehicleRegister(),
+                update: (id) => VehicleRegister(
+                  type: CrudType.update(
+                    id: id,
                   ),
                 ),
-                brand: (type) => type.when(
-                  overview: () => const BrandOverview(),
-                  create: () => const BrandRegister(),
-                  update: (id) => BrandRegister(
-                    type: CrudType.update(
-                      id: id,
-                    ),
+              ),
+              brand: (type) => type.when(
+                overview: () => const BrandOverview(),
+                create: () => const BrandRegister(),
+                update: (id) => BrandRegister(
+                  type: CrudType.update(
+                    id: id,
                   ),
                 ),
-                otherStores: () => const ProductOtherStoresOverview(),
-              );
-            },
-          ),
+              ),
+              otherStores: () => const ProductOtherStoresOverview(),
+            );
+          },
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(

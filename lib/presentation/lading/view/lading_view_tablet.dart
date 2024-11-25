@@ -31,7 +31,7 @@ class LandingViewTablet extends IView {
               Text(
                 context.tr.inventory.toUpperCase(),
                 style: const TextStyle(
-                  color: AppColor.yellow,
+                  color: AppColor.lightColor,
                   fontSize: 10,
                 ),
               ),
@@ -64,7 +64,7 @@ class LandingViewTablet extends IView {
                     color: AppColor.primaryColorSwatch,
                     borderRadius: BorderRadius.circular(32),
                     border: Border.all(
-                      color: AppColor.yellow,
+                      color: AppColor.lightColor,
                       width: 2,
                     ),
                   ),
@@ -172,8 +172,8 @@ class LandingViewTablet extends IView {
                               ? AppColor.backgroundColor
                               : Colors.transparent,
                           child: ListTile(
-                            iconColor: AppColor.yellow,
-                            textColor: AppColor.yellow,
+                            iconColor: AppColor.lightColor,
+                            textColor: AppColor.lightColor,
                             leading: const Icon(Icons.home),
                             title: Text(context.tr.home),
                             selected: bloc.state.asLogged.mod.isModHome,
@@ -191,8 +191,8 @@ class LandingViewTablet extends IView {
                               ? AppColor.backgroundColor
                               : Colors.transparent,
                           child: ListTile(
-                            iconColor: AppColor.yellow,
-                            textColor: AppColor.yellow,
+                            iconColor: AppColor.lightColor,
+                            textColor: AppColor.lightColor,
                             leading: const Icon(Icons.inventory),
                             title: Text(context.tr.inventory),
                             selected: bloc.state.asLogged.mod.isModInventory,
@@ -210,8 +210,8 @@ class LandingViewTablet extends IView {
                         //   //     ? AppColor.backgroundColor
                         //   //     : Colors.transparent,
                         //   child: ListTile(
-                        //     iconColor: Colors.yellow,
-                        //     textColor: Colors.yellow,
+                        //     iconColor: Colors.lightColor,
+                        //     textColor: Colors.lightColor,
                         //     leading: const Icon(Icons.people),
                         //     title: const Text('Clients'),
                         //     //selected: bloc.state.asLogged.mod.isModClients,
@@ -232,8 +232,8 @@ class LandingViewTablet extends IView {
                   const Spacer(),
                   const Divider(),
                   ListTile(
-                    iconColor: AppColor.yellow,
-                    textColor: AppColor.yellow,
+                    iconColor: AppColor.lightColor,
+                    textColor: AppColor.lightColor,
                     leading: const Icon(Icons.logout),
                     title: const Text('Logout'),
                     onTap: () {

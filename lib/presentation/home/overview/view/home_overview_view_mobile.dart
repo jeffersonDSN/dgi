@@ -17,7 +17,7 @@ class HomeOverviewViewMobile extends IView {
       appBar: AppBar(
         backgroundColor: AppColor.primaryColorSwatch,
         iconTheme: const IconThemeData(
-          color: AppColor.yellow,
+          color: AppColor.lightColor,
         ),
         title: Column(
           children: [
@@ -29,7 +29,7 @@ class HomeOverviewViewMobile extends IView {
             Text(
               context.tr.inventory.toUpperCase(),
               style: const TextStyle(
-                color: AppColor.yellow,
+                color: AppColor.lightColor,
                 fontSize: 10,
               ),
             ),

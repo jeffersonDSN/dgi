@@ -16,13 +16,6 @@ class DgiRectangularAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Card(
-        shape: RoundedRectangleBorder(
-          side: const BorderSide(
-            color: AppColor.primaryColorSwatch,
-            width: 1,
-          ),
-          borderRadius: BorderRadius.circular(Sizes.size8),
-        ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(Sizes.size8),
           child: SizedBox.square(

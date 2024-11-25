@@ -37,7 +37,7 @@ class SignInViewTablet extends IView {
                       context.tr.inventory.toUpperCase(),
                       style: const TextStyle(
                         fontSize: Sizes.size24,
-                        color: AppColor.yellow,
+                        color: AppColor.lightColor,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -46,7 +46,7 @@ class SignInViewTablet extends IView {
                       context.tr.welcome,
                       style: const TextStyle(
                         fontSize: Sizes.size32,
-                        color: AppColor.yellow,
+                        color: AppColor.lightColor,
                         fontWeight: FontWeight.bold,
                       ),
                     )
@@ -128,7 +128,7 @@ class SignInViewTablet extends IView {
                                     ? const SizedBox(
                                         height: Sizes.size24,
                                         child: CircularProgressIndicator(
-                                          color: AppColor.yellow,
+                                          color: AppColor.lightColor,
                                         ),
                                       )
                                     : Text(

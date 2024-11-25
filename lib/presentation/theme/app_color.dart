@@ -4,7 +4,7 @@ class AppColor {
   AppColor._();
 
   static const primaryColorSwatch = MaterialColor(
-    0xFF1D335A,
+    0xFF006493,
     <int, Color>{
       50: Color(0xFFD8E2FE),
       100: Color(0xFFCEF9FC),
@@ -51,7 +51,7 @@ class AppColor {
     },
   );
 
-  static const backgroundColor = Color(0xFFF3F3F3);
+  static const backgroundColor = Color(0xFFF1F5F9);
 
   static const lightColor = Colors.white;
 

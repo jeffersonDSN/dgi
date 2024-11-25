@@ -12,6 +12,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(
+    //name: "dginventory-d9593",
     options: DefaultFirebaseOptions.currentPlatform,
   );
 

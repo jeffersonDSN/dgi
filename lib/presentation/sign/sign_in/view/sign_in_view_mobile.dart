@@ -40,7 +40,7 @@ class SignInViewMobile extends IView {
                         context.tr.inventory.toUpperCase(),
                         style: const TextStyle(
                           fontSize: Sizes.size20,
-                          color: AppColor.yellow,
+                          color: AppColor.lightColor,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -48,7 +48,7 @@ class SignInViewMobile extends IView {
                         'welcome!',
                         style: TextStyle(
                           fontSize: Sizes.size20,
-                          color: AppColor.yellow,
+                          color: AppColor.lightColor,
                           fontWeight: FontWeight.bold,
                         ),
                       )
@@ -143,7 +143,7 @@ class SignInViewMobile extends IView {
                                 child: FilledButton(
                                   child: state.isSignIn
                                       ? const CircularProgressIndicator(
-                                          color: AppColor.yellow,
+                                          color: AppColor.lightColor,
                                         )
                                       : const Text(
                                           'Sign in',

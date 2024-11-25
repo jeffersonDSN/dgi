@@ -27,33 +27,41 @@ class VehicleRegisterViewTablet extends IView {
       VehicleRegisterEvent.load(type: type),
     );
 
-    return Container(
-      color: AppColor.lightColor,
-      child: Column(
-        children: [
-          Expanded(
-            child: BlocBuilder<VehicleRegisterBloc, VehicleRegisterState>(
-              bloc: bloc,
-              builder: (context, state) {
-                return state.maybeWhen(
-                  orElse: () => const Center(
-                    child: CircularProgressIndicator(),
+    return Column(
+      children: [
+        BlocBuilder<VehicleRegisterBloc, VehicleRegisterState>(
+          bloc: bloc,
+          builder: (context, state) {
+            return state.maybeWhen(
+              orElse: () => const Center(
+                child: CircularProgressIndicator(),
+              ),
+              loaded: (type, vehicle, brands) {
+                return Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    Sizes.size32,
+                    Sizes.size16,
+                    Sizes.size32,
+                    Sizes.size16,
                   ),
-                  loaded: (type, vehicle, brands) {
-                    return Padding(
-                      padding: const EdgeInsets.fromLTRB(
-                        Sizes.size32,
-                        Sizes.size16,
-                        Sizes.size32,
-                        Sizes.size16,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Expanded(
-                                child: BaseTextFormField(
+                  child: Row(
+                    children: [
+                      const Spacer(),
+                      Expanded(
+                        flex: 2,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                              Sizes.size4,
+                            ),
+                            color: AppColor.lightColor,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(Sizes.size8),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                BaseTextFormField(
                                   label: context.tr.name,
                                   initialValue: vehicle.name,
                                   onChanged: (value) {
@@ -64,10 +72,8 @@ class VehicleRegisterViewTablet extends IView {
                                     );
                                   },
                                 ),
-                              ),
-                              gapWidth16,
-                              Expanded(
-                                child: BaseTextFormField(
+                                gapHeight8,
+                                BaseTextFormField(
                                   label: context.tr.model,
                                   initialValue: vehicle.model,
                                   onChanged: (value) {
@@ -78,134 +84,123 @@ class VehicleRegisterViewTablet extends IView {
                                     );
                                   },
                                 ),
-                              ),
-                            ],
-                          ),
-                          gapHeight16,
-                          Row(
-                            children: [
-                              Expanded(
-                                child: BaseTextFormField(
-                                  label: context.tr.fromYear,
-                                  initialValue: vehicle.fromYear,
-                                  inputFormatters: [
-                                    FilteringTextInputFormatter.digitsOnly
-                                  ],
-                                  onChanged: (value) {
-                                    bloc.add(
-                                      VehicleRegisterEvent.changeFromYear(
-                                        fromYear: value,
+                                gapWidth8,
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: BaseTextFormField(
+                                        label: context.tr.fromYear,
+                                        initialValue: vehicle.fromYear,
+                                        inputFormatters: [
+                                          FilteringTextInputFormatter.digitsOnly
+                                        ],
+                                        onChanged: (value) {
+                                          bloc.add(
+                                            VehicleRegisterEvent.changeFromYear(
+                                              fromYear: value,
+                                            ),
+                                          );
+                                        },
                                       ),
-                                    );
-                                  },
-                                ),
-                              ),
-                              gapWidth16,
-                              Expanded(
-                                child: BaseTextFormField(
-                                  label: context.tr.toYear,
-                                  initialValue: vehicle.toYear,
-                                  inputFormatters: [
-                                    FilteringTextInputFormatter.digitsOnly
-                                  ],
-                                  onChanged: (value) {
-                                    bloc.add(
-                                      VehicleRegisterEvent.changeToYear(
-                                        toYear: value,
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ),
-                              gapWidth16,
-                              Expanded(
-                                child: BaseDropdownButtonField(
-                                  label: context.tr.brand,
-                                  value: vehicle.brand,
-                                  isExpanded: true,
-                                  items: [
-                                    DropdownItem(
-                                      value: '',
-                                      title: '',
                                     ),
-                                    ...brands.map((brand) {
-                                      return DropdownItem(
-                                        value: brand.id,
-                                        title: brand.name,
-                                      );
-                                    }),
+                                    gapWidth16,
+                                    Expanded(
+                                      child: BaseTextFormField(
+                                        label: context.tr.toYear,
+                                        initialValue: vehicle.toYear,
+                                        inputFormatters: [
+                                          FilteringTextInputFormatter.digitsOnly
+                                        ],
+                                        onChanged: (value) {
+                                          bloc.add(
+                                            VehicleRegisterEvent.changeToYear(
+                                              toYear: value,
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                    gapWidth16,
+                                    Expanded(
+                                      child: BaseDropdownButtonField(
+                                        label: context.tr.brand,
+                                        value: vehicle.brand,
+                                        isExpanded: true,
+                                        items: [
+                                          DropdownItem(
+                                            value: '',
+                                            title: '',
+                                          ),
+                                          ...brands.map((brand) {
+                                            return DropdownItem(
+                                              value: brand.id,
+                                              title: brand.name,
+                                            );
+                                          }),
+                                        ],
+                                        onChanged: (value) {
+                                          if (value != null) {
+                                            bloc.add(
+                                              VehicleRegisterEvent.changeBrand(
+                                                brand: value,
+                                              ),
+                                            );
+                                          }
+                                        },
+                                      ),
+                                    ),
                                   ],
-                                  onChanged: (value) {
-                                    if (value != null) {
-                                      bloc.add(
-                                        VehicleRegisterEvent.changeBrand(
-                                          brand: value,
-                                        ),
-                                      );
-                                    }
-                                  },
                                 ),
-                              ),
-                            ],
+                                gapHeight16,
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.all(Sizes.size8),
+                                      child: OutlinedButton(
+                                        child: Text(context.tr.close),
+                                        onPressed: () {
+                                          appBloc(context).add(
+                                            const AppEvent.goBack(),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.all(Sizes.size8),
+                                      child: FilledButton(
+                                        child: Text(context.tr.save),
+                                        onPressed: () {
+                                          bloc.add(
+                                            VehicleRegisterEvent.save(
+                                              callback: () {
+                                                appBloc(context).add(
+                                                  const AppEvent.goBack(),
+                                                );
+                                              },
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
                           ),
-                        ],
+                        ),
                       ),
-                    );
-                  },
+                      const Spacer(),
+                    ],
+                  ),
                 );
               },
-            ),
-          ),
-          const Divider(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(Sizes.size8),
-                child: FilledButton.icon(
-                  style: const ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(
-                      AppColor.warning,
-                    ),
-                  ),
-                  icon: const Icon(Icons.close),
-                  label: Text(context.tr.close),
-                  onPressed: () {
-                    appBloc(context).add(
-                      const AppEvent.goBack(),
-                    );
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(Sizes.size8),
-                child: FilledButton.icon(
-                  style: const ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(
-                      AppColor.success,
-                    ),
-                  ),
-                  icon: const Icon(
-                    Icons.check,
-                  ),
-                  label: Text(context.tr.save),
-                  onPressed: () {
-                    bloc.add(
-                      VehicleRegisterEvent.save(
-                        callback: () {
-                          appBloc(context).add(
-                            const AppEvent.goBack(),
-                          );
-                        },
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ],
-          )
-        ],
-      ),
+            );
+          },
+        ),
+      ],
     );
   }
 }

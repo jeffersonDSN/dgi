@@ -50,7 +50,7 @@ class InventoryOverviewViewTablet extends IView {
                         borderRadius: BorderRadius.circular(
                           Sizes.size4,
                         ),
-                        color: AppColor.greyColorSwatch.shade200,
+                        color: AppColor.backgroundColor,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(2),
@@ -149,63 +149,59 @@ class InventoryOverviewViewTablet extends IView {
           ),
           gapHeight4,
           Expanded(
-            child: Container(
-              color: AppColor.lightColor,
-              child: TabBarView(
-                children: bloc
-                    .state.asLogged.mod.asModInventory.inventoryFeatures
-                    .when(
-                  product: (type) {
-                    return [
-                      type.when(
-                        overview: () => const ProductOverview(),
-                        create: () => const ProductRegister(),
-                        update: (id) => ProductRegister(
-                          type: CrudType.update(id: id),
-                        ),
+            child: TabBarView(
+              children:
+                  bloc.state.asLogged.mod.asModInventory.inventoryFeatures.when(
+                product: (type) {
+                  return [
+                    type.when(
+                      overview: () => const ProductOverview(),
+                      create: () => const ProductRegister(),
+                      update: (id) => ProductRegister(
+                        type: CrudType.update(id: id),
                       ),
-                      Container(),
-                      Container(),
-                      Container(),
-                    ];
-                  },
-                  vehicle: (type) {
-                    return [
-                      Container(),
-                      type.when(
-                        overview: () => const VehicleOverview(),
-                        create: () => const VehicleRegister(),
-                        update: (id) => VehicleRegister(
-                          type: CrudType.update(id: id),
-                        ),
+                    ),
+                    Container(),
+                    Container(),
+                    Container(),
+                  ];
+                },
+                vehicle: (type) {
+                  return [
+                    Container(),
+                    type.when(
+                      overview: () => const VehicleOverview(),
+                      create: () => const VehicleRegister(),
+                      update: (id) => VehicleRegister(
+                        type: CrudType.update(id: id),
                       ),
-                      Container(),
-                      Container(),
-                    ];
-                  },
-                  brand: (type) {
-                    return [
-                      Container(),
-                      Container(),
-                      type.when(
-                        overview: () => const BrandOverview(),
-                        create: () => const BrandRegister(),
-                        update: (id) => BrandRegister(
-                          type: CrudType.update(id: id),
-                        ),
+                    ),
+                    Container(),
+                    Container(),
+                  ];
+                },
+                brand: (type) {
+                  return [
+                    Container(),
+                    Container(),
+                    type.when(
+                      overview: () => const BrandOverview(),
+                      create: () => const BrandRegister(),
+                      update: (id) => BrandRegister(
+                        type: CrudType.update(id: id),
                       ),
-                      Container(),
-                    ];
-                  },
-                  otherStores: () {
-                    return [
-                      Container(),
-                      Container(),
-                      Container(),
-                      const ProductOtherStoresOverview(),
-                    ];
-                  },
-                ),
+                    ),
+                    Container(),
+                  ];
+                },
+                otherStores: () {
+                  return [
+                    Container(),
+                    Container(),
+                    Container(),
+                    const ProductOtherStoresOverview(),
+                  ];
+                },
               ),
             ),
           ),

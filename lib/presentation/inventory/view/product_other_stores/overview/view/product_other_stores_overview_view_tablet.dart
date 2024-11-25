@@ -163,7 +163,7 @@ class ProductOtherStoresOverviewViewTablet extends IView {
                                         children: [
                                           const Icon(
                                             size: 20,
-                                            color: AppColor.yellow,
+                                            color: AppColor.lightColor,
                                             Icons.shopping_cart,
                                           ),
                                           gapWidth8,

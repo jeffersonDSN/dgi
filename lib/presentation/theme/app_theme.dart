@@ -13,14 +13,13 @@ class AppTheme {
     textTheme: _textTheme,
     listTileTheme: _listTileTheme,
     filledButtonTheme: _filledButtonThemeData,
-    outlinedButtonTheme: _outlinedButtonThemeData,
     floatingActionButtonTheme: _floatingActionButtonThemeData,
     scrollbarTheme: _scrollbarThemeData,
   );
 }
 
 AppBarTheme get _appBarTheme => const AppBarTheme(
-      backgroundColor: AppColor.lightColor,
+      backgroundColor: AppColor.backgroundColor,
       titleTextStyle: TextStyle(
         color: AppColor.primaryColorSwatch,
         fontSize: 20,
@@ -40,13 +39,16 @@ ColorScheme get _colorScheme => ColorScheme.fromSeed(
 InputDecorationTheme get _inputDecorationTheme => const InputDecorationTheme(
       isDense: true,
       filled: true,
-      fillColor: AppColor.lightColor,
+      fillColor: AppColor.backgroundColor,
       prefixIconColor: AppColor.primaryColorSwatch,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(
             Sizes.size4,
           ),
+        ),
+        borderSide: BorderSide(
+          color: AppColor.backgroundColor,
         ),
       ),
       focusedBorder: OutlineInputBorder(
@@ -66,8 +68,8 @@ CardTheme get _cardTheme => CardTheme(
       elevation: 0,
       shape: RoundedRectangleBorder(
         side: const BorderSide(
-          color: Colors.black,
-          width: 2,
+          color: AppColor.backgroundColor,
+          width: 1,
         ),
         borderRadius: BorderRadius.circular(
           Sizes.size8,
@@ -91,30 +93,15 @@ ListTileThemeData get _listTileTheme => const ListTileThemeData(
       selectedTileColor: AppColor.backgroundColor,
     );
 
-FilledButtonThemeData get _filledButtonThemeData => FilledButtonThemeData(
+FilledButtonThemeData get _filledButtonThemeData => const FilledButtonThemeData(
       style: ButtonStyle(
-        shape: WidgetStatePropertyAll(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(
-              Sizes.size4,
-            ),
-          ),
-        ),
-        textStyle: const WidgetStatePropertyAll(
+        textStyle: WidgetStatePropertyAll(
           TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
-        foregroundColor: const WidgetStatePropertyAll(
-          AppColor.yellow,
-        ),
-      ),
-    );
-
-OutlinedButtonThemeData get _outlinedButtonThemeData => OutlinedButtonThemeData(
-      style: OutlinedButton.styleFrom(
-        side: const BorderSide(
-          color: AppColor.primaryColorSwatch,
+        foregroundColor: WidgetStatePropertyAll(
+          AppColor.lightColor,
         ),
       ),
     );
