@@ -3,7 +3,6 @@ import 'package:dgi/presentation/app/model/inventory_features.dart';
 import 'package:dgi/presentation/app/model/mod.dart';
 import 'package:dgi/presentation/app/model/view_type.dart';
 import 'package:dgi/presentation/core/view/i_view.dart';
-import 'package:dgi/presentation/core/widget/dgi_rectangular_avatar.dart';
 import 'package:dgi/presentation/inventory/view/vehicle/overview/bloc/vehicle_overview_view_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,7 +38,6 @@ class VehicleOverviewViewMobile extends IView {
                       var vehicle = vehicles[index];
 
                       return ListTile(
-                        leading: const DgiRectangularAvatar(),
                         title: Text(vehicle.name),
                         subtitle: Text(
                           vehicle.brand != ''

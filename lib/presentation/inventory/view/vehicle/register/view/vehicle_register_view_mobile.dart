@@ -27,21 +27,21 @@ class VehicleRegisterViewMobile extends IView {
       VehicleRegisterEvent.load(type: type),
     );
 
-    return Container(
-      color: AppColor.lightColor,
-      child: Column(
-        children: [
-          Expanded(
-            child: BlocBuilder<VehicleRegisterBloc, VehicleRegisterState>(
-              bloc: bloc,
-              builder: (context, state) {
-                return state.maybeWhen(
-                  orElse: () => const Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                  loaded: (type, vehicle, brands) {
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: Sizes.size16),
+    return BlocBuilder<VehicleRegisterBloc, VehicleRegisterState>(
+      bloc: bloc,
+      builder: (context, state) {
+        return state.maybeWhen(
+          orElse: () => const Center(
+            child: CircularProgressIndicator(),
+          ),
+          loaded: (type, vehicle, brands) {
+            return Column(
+              children: [
+                Expanded(
+                  child: Card(
+                    color: AppColor.lightColor,
+                    child: Padding(
+                      padding: const EdgeInsets.all(Sizes.size16),
                       child: SingleChildScrollView(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -131,66 +131,51 @@ class VehicleRegisterViewMobile extends IView {
                           ],
                         ),
                       ),
-                    );
-                  },
-                );
-              },
-            ),
-          ),
-          const Divider(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(Sizes.size8),
-                  child: FilledButton.icon(
-                    style: const ButtonStyle(
-                      backgroundColor: WidgetStatePropertyAll(
-                        AppColor.warning,
-                      ),
                     ),
-                    icon: const Icon(Icons.close),
-                    label: Text(context.tr.close),
-                    onPressed: () {
-                      appBloc(context).add(
-                        const AppEvent.goBack(),
-                      );
-                    },
                   ),
                 ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(Sizes.size8),
-                  child: FilledButton.icon(
-                    style: const ButtonStyle(
-                      backgroundColor: WidgetStatePropertyAll(
-                        AppColor.success,
-                      ),
-                    ),
-                    icon: const Icon(
-                      Icons.check,
-                    ),
-                    label: Text(context.tr.save),
-                    onPressed: () {
-                      bloc.add(
-                        VehicleRegisterEvent.save(
-                          callback: () {
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(Sizes.size8),
+                        child: OutlinedButton(
+                          child: Text(context.tr.close),
+                          onPressed: () {
                             appBloc(context).add(
                               const AppEvent.goBack(),
                             );
                           },
                         ),
-                      );
-                    },
-                  ),
-                ),
-              ),
-            ],
-          )
-        ],
-      ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(Sizes.size8),
+                        child: FilledButton(
+                          child: Text(context.tr.save),
+                          onPressed: () {
+                            bloc.add(
+                              VehicleRegisterEvent.save(
+                                callback: () {
+                                  appBloc(context).add(
+                                    const AppEvent.goBack(),
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            );
+          },
+        );
+      },
     );
   }
 }
