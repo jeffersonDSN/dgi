@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#001D35"/>
+      <stop offset="100%" style="stop-color:#006493"/>
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="48" fill="url(#bgGrad)"/>
+  
+  <!-- Main Letter D -->
+  <rect x="48" y="48" width="96" height="96" rx="12" fill="white"/>
+  <rect x="60" y="60" width="72" height="72" rx="8" fill="#001D35"/>
+  <rect x="72" y="72" width="48" height="48" rx="4" fill="white"/>
+  
+  <!-- Inventory Dots -->
+  <circle cx="96" cy="156" r="4" fill="white"/>
+  <circle cx="108" cy="156" r="4" fill="white"/>
+  <circle cx="84" cy="156" r="4" fill="white"/>
+</svg>
