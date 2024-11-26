@@ -51,15 +51,10 @@ class ProductRegisterViewMobile extends IView {
                         Row(
                           children: [
                             Expanded(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                    Sizes.size8,
-                                  ),
-                                  color: AppColor.lightColor,
-                                ),
+                              child: Card(
+                                color: AppColor.lightColor,
                                 child: Padding(
-                                  padding: const EdgeInsets.all(Sizes.size8),
+                                  padding: const EdgeInsets.all(Sizes.size16),
                                   child: InkWell(
                                     child: DgiRectangularAvatar(
                                       dimension: Sizes.size156,
@@ -99,15 +94,10 @@ class ProductRegisterViewMobile extends IView {
                           ],
                         ),
                         gapHeight8,
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                              Sizes.size8,
-                            ),
-                            color: AppColor.lightColor,
-                          ),
+                        Card(
+                          color: AppColor.lightColor,
                           child: Padding(
-                            padding: const EdgeInsets.all(Sizes.size8),
+                            padding: const EdgeInsets.all(Sizes.size16),
                             child: Column(
                               children: [
                                 BaseTextFormField(

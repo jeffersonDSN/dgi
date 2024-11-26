@@ -44,7 +44,7 @@ class InventoryOverviewViewTablet extends IView {
                 SizedBox(
                   width: Sizes.size600,
                   child: Padding(
-                    padding: const EdgeInsets.all(Sizes.size8),
+                    padding: const EdgeInsets.all(Sizes.size16),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(

@@ -53,13 +53,8 @@ class ProductRegisterViewTablet extends IView {
                     child: Row(
                       children: [
                         Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                Sizes.size4,
-                              ),
-                              color: AppColor.lightColor,
-                            ),
+                          child: Card(
+                            color: AppColor.lightColor,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
@@ -108,13 +103,8 @@ class ProductRegisterViewTablet extends IView {
                         gapWidth16,
                         Expanded(
                           flex: 2,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                Sizes.size4,
-                              ),
-                              color: AppColor.lightColor,
-                            ),
+                          child: Card(
+                            color: AppColor.lightColor,
                             child: Padding(
                               padding: const EdgeInsets.all(
                                 Sizes.size16,

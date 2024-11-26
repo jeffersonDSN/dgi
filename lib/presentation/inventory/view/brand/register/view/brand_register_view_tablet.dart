@@ -25,104 +25,88 @@ class BrandRegisterViewTablet extends IView {
       BrandRegisterEvent.load(type: type),
     );
 
-    return Container(
-      color: AppColor.lightColor,
-      child: Column(
-        children: [
-          Expanded(
-            child: BlocBuilder<BrandRegisterBloc, BrandRegisterState>(
-              bloc: bloc,
-              builder: (context, state) {
-                return state.maybeWhen(
-                  orElse: () => const Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                  loaded: (type, brand) {
-                    return Padding(
-                      padding: const EdgeInsets.fromLTRB(
-                        Sizes.size32,
-                        Sizes.size16,
-                        Sizes.size32,
-                        Sizes.size16,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
+    return Column(
+      children: [
+        Expanded(
+          child: BlocBuilder<BrandRegisterBloc, BrandRegisterState>(
+            bloc: bloc,
+            builder: (context, state) {
+              return state.maybeWhen(
+                orElse: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                loaded: (type, brand) {
+                  return Column(
+                    children: [
+                      Card(
+                        color: AppColor.lightColor,
+                        child: Padding(
+                          padding: const EdgeInsets.all(Sizes.size16),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Expanded(
-                                child: BaseTextFormField(
-                                  label: context.tr.name,
-                                  initialValue: brand.name,
-                                  onChanged: (value) {
-                                    bloc.add(
-                                      BrandRegisterEvent.changeName(
-                                        name: value,
-                                      ),
-                                    );
-                                  },
-                                ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: BaseTextFormField(
+                                      label: context.tr.name,
+                                      initialValue: brand.name,
+                                      onChanged: (value) {
+                                        bloc.add(
+                                          BrandRegisterEvent.changeName(
+                                            name: value,
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(Sizes.size8),
+                            child: OutlinedButton(
+                              child: Text(context.tr.close),
+                              onPressed: () {
+                                appBloc(context).add(
+                                  const AppEvent.goBack(),
+                                );
+                              },
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(Sizes.size8),
+                            child: FilledButton(
+                              child: Text(context.tr.save),
+                              onPressed: () {
+                                bloc.add(
+                                  BrandRegisterEvent.save(
+                                    callback: () {
+                                      appBloc(context).add(
+                                        const AppEvent.goBack(),
+                                      );
+                                    },
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
                         ],
-                      ),
-                    );
-                  },
-                );
-              },
-            ),
+                      )
+                    ],
+                  );
+                },
+              );
+            },
           ),
-          const Divider(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(Sizes.size8),
-                child: FilledButton.icon(
-                  style: const ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(
-                      AppColor.warning,
-                    ),
-                  ),
-                  icon: const Icon(Icons.close),
-                  label: Text(context.tr.close),
-                  onPressed: () {
-                    appBloc(context).add(
-                      const AppEvent.goBack(),
-                    );
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(Sizes.size8),
-                child: FilledButton.icon(
-                  style: const ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(
-                      AppColor.success,
-                    ),
-                  ),
-                  icon: const Icon(
-                    Icons.check,
-                  ),
-                  label: Text(context.tr.save),
-                  onPressed: () {
-                    bloc.add(
-                      BrandRegisterEvent.save(
-                        callback: () {
-                          appBloc(context).add(
-                            const AppEvent.goBack(),
-                          );
-                        },
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ],
-          )
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

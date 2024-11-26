@@ -49,15 +49,10 @@ class VehicleRegisterViewTablet extends IView {
                       const Spacer(),
                       Expanded(
                         flex: 2,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                              Sizes.size4,
-                            ),
-                            color: AppColor.lightColor,
-                          ),
+                        child: Card(
+                          color: AppColor.lightColor,
                           child: Padding(
-                            padding: const EdgeInsets.all(Sizes.size8),
+                            padding: const EdgeInsets.all(Sizes.size16),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [

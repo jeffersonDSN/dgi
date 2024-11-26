@@ -25,7 +25,7 @@ class VehicleOverviewViewTablet extends IView {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(Sizes.size8),
+          padding: const EdgeInsets.all(Sizes.size16),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
